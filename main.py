@@ -1,4 +1,4 @@
-
+simulacao_rede/
 ---
 
 ## 📄 **main.py** (código principal)
