@@ -1,26 +1,25 @@
-simulacao_rede/
----
+simulacao_rede
 
-## 📄 **main.py** (código principal)
-
-```python
-# Simulação de Hub, Switch e Roteador em Python
+---------------------
+# main.py
+# Simulação de Hub, Switch e Roteador
+# Autor: Thales Ponce
+# Objetivo: Demonstrar o funcionamento básico de dispositivos de rede
 
 # Lista de dispositivos conectados à rede
 dispositivos = ["PC1", "PC2", "PC3", "PC4"]
 
 # -------------------------------
-# HUB: envia para todos os dispositivos
+# HUB: envia mensagens para todos os dispositivos
 # -------------------------------
-def hub(origem, destino, mensagem):
+def hub(origem, mensagem):
     print(f"\n📡 HUB recebeu de {origem}: '{mensagem}'")
     for d in dispositivos:
         if d != origem:
             print(f"➡️ Enviando para {d} (mesmo sem saber quem é o destino)")
 
-
 # -------------------------------
-# SWITCH: envia apenas para o destino correto
+# SWITCH: envia mensagens apenas para o dispositivo correto
 # -------------------------------
 def switch(origem, destino, mensagem):
     print(f"\n🔀 SWITCH recebeu de {origem}: '{mensagem}'")
@@ -29,7 +28,6 @@ def switch(origem, destino, mensagem):
     else:
         print("⚠️ Dispositivo de destino não encontrado na rede")
 
-
 # -------------------------------
 # ROTEADOR: conecta redes diferentes
 # -------------------------------
@@ -37,36 +35,28 @@ def roteador(origem, destino_rede, mensagem):
     print(f"\n🌐 ROTEADOR recebeu de {origem}: '{mensagem}'")
     print(f"➡️ Encaminhando para a rede {destino_rede} (escolhendo a melhor rota)")
 
-
 # -------------------------------
-# Testes de simulação
+# Execução da simulação
 # -------------------------------
 if __name__ == "__main__":
-    hub("PC1", "PC3", "Olá, tudo bem?")
+    print("===== SIMULAÇÃO DE REDE =====")
+    
+    # Testando Hub
+    hub("PC1", "Olá, tudo bem?")
+    
+    # Testando Switch
     switch("PC1", "PC3", "Olá, tudo bem?")
+    
+    # Testando Roteador
     roteador("PC1", "Internet", "Acessando um site")
+    ---------------------------------------------------------------
+    ✅ O que esse código faz:
 
----------------------------------------------------------------------------------------
-# Saída esperada:
-Java
+Hub: envia a mensagem para todos os dispositivos conectados, sem distinguir o destino.
 
-📡 HUB recebeu de PC1: 'Olá, tudo bem?'
-➡️ Enviando para PC2 (mesmo sem saber quem é o destino)
-➡️ Enviando para PC3 (mesmo sem saber quem é o destino)
-➡️ Enviando para PC4 (mesmo sem saber quem é o destino)
+Switch: envia a mensagem apenas para o destino correto, simulando inteligência de rede.
 
-🔀 SWITCH recebeu de PC1: 'Olá, tudo bem?'
-➡️ Enviando apenas para PC3
+Roteador: encaminha a mensagem de uma rede local para outra (simulado como “Internet”).
 
-🌐 ROTEADOR recebeu de PC1: 'Acessando um site'
-➡️ Encaminhando para a rede Internet (escolhendo a melhor rota)
----------------------------------------------------------------------------------------------------------
-🎯 Objetivo do projeto
 
-Este projeto foi criado para:
 
-Fixar conceitos básicos de redes.
-
-Demonstrar a diferença entre Hub, Switch e Roteador.
-
-Colocar em prática um aprendizado teórico usando Python.
